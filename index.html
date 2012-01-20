@@ -1,0 +1,42 @@
+<script src="/socket.io/socket.io.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script>
+  $(document).ready(function() {
+      var socket = io.connect('http://localhost:1337');
+      //socket.on('news', function (data) {
+        // console.log(data);
+        //socket.emit('my other event', { my: 'poopstick!!' });
+      //});
+      //socket.on('new user', function (data) {
+      //    console.log(data);
+      //    $('body').append('<pre>User Connected!</pre>');
+      //});
+      socket.on('change_color', function (newcolor) {
+          // console.log(newcolor);
+          $('#gamelight').hide().delay(200).css('background', newcolor.color).show(0);
+      });
+  })
+</script>
+<style type="text/css">
+* {
+margin: 0;
+padding: 0;
+}
+body {
+margin: 1in;
+}
+#gamelight {
+    height: 80px;
+    width: 80px;
+    display: block;
+    -moz-border-radius: 40px;
+    -webkit-border-radius: 40px;
+    background: #333;
+    margin: 0 auto;
+}
+</style>
+        <title>node.js N-Back Game</title>
+        <body>
+            <span id="gamelight"></span>
+
+        </body>
